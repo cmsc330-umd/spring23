@@ -1,4 +1,7 @@
-# Discussion 1 - Friday, January 27<sup>th</sup>
+# Discussion 0 - Friday, January 27<sup>th</sup>
+
+## Reminders
+1. Project 0 due February 4th 11:59PM
 
 ## What is Git?
 
