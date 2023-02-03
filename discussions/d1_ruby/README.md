@@ -85,7 +85,7 @@ def do_something_on_variable(variable, something)
   something.call(variable)
 end
 
-puts do_something_on_variable(square, 2) # outputs 4
+puts do_something_on_variable(2, square) # outputs 4
 ```
 
 You can also create nested Procs:
