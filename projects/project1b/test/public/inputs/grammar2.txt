@@ -1,0 +1,5 @@
+L1: NOU, AJD, JKJ
+L2: JKJ{2}, NOU, AJD
+L3: JKJ{2}, AJD, NOU
+L4: AJD, NOU, JKJ
+English: NOU, AJD, JKJ

@@ -1,0 +1,8 @@
+w-one, AJD, L1:w-two, L2:w-three, L3:w-four, L4:w-five
+w-ten, AJD, L2:w-oneone, L3:w-onetwo, L2:w-onethree, L3:w-onetwo
+w-onefour, JKJ, L4:w-onefive, L2:w-onesix, L1:w-oneseven, L3:w-oneeight
+w-six, JKJ, L1:w-seven, L4:w-eight, L2:w-nine
+w-onenine, NOU, L1:w-twozero, L2:w-twoone, L3:w-twotwo, L4:w-twothree
+w-twofour, NOU, L1:w-twofive, L2:w-twosix, L3:w-twoseven
+w-twoeight, NOU, L1:w-twonine, L3:w-threezero, L4:w-threeone
+only one invalid here for good measure

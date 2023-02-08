@@ -1,0 +1,4 @@
+Spanish: DET, NOU, DET
+English: DET, ADJ, NOU
+German: nou, ADJ
+French: ADJ, NOU, DET

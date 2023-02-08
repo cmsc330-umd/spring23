@@ -1,0 +1,9 @@
+blue, ADJ, French:bleu, German:blau, Spanish:azul, Swedish:Bla
+this is an invalid line
+truck, NOU, Spanish:camion, German:lkw
+the, DET, German:der, Spanish:el, French:
+red, ADJ, French:rouge, German:rot, Spanish:rojo
+at, PRE, German:bei
+this is also invalid
+sea, NOU, German:meer, French:mer
+fork, NOU, Italian:forchetta, German:gabel
