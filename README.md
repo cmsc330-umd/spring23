@@ -8,3 +8,4 @@ List of projects:
 List of discussions:
 + [Discussion 0 - Git](https://github.com/cmsc330-umd/spring23/tree/main/discussions/d0_git)
 + [Discussion 1 - Ruby](https://github.com/cmsc330-umd/spring23/tree/main/discussions/d1_ruby)
++ [Discussion 2 - Ruby Part 2](https://github.com/cmsc330-umd/spring23/tree/main/discussions/d2_ruby2)
