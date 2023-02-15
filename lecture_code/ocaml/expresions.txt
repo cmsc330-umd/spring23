@@ -1,0 +1,70 @@
+(expr1:int + expr2:int):int
+5:int
+6:int
+(5:int + 6:int):int
+
+((5:int + 6:int):int + 7:int):int
+(5:int + (6:int:int + 7:int)):int
+
+(expr1:int + expr2:int):int
+(expr1:int - expr2:int):int
+(expr1:int * expr2:int):int
+(expr1:int / expr2:int):int
+
+true:bool
+(true || false):bool
+false:bool
+
+(if expr1:bool then expr2:t else expr3:t):t
+
+if true then false else true;;
+(if true:bool then false:bool else true:bool):bool;;
+expr1: true:bool
+expr2: false:bool
+expr3: true:bool
+
+if true then 3 else 4;;
+(if true:bool then 3:int else 4:int):int;;
+expr1: true:bool
+expr2: 3:int
+expr3: 4:int
+
+(if (true||false) then 3+4 else 5;;
+expr1: (true||false):bool
+expr2: 3+4:int
+expr3: 5:int
+
+if false then 5 else 6;;
+expr1: (if true then false else true): bool
+  -> e1 -> true:bool
+  -> e2 -> false:bool
+  -> e3 -> true:bool
+  => false:bool
+expr2: 5:int
+expr3: 6:int
+
+These are the same
+---------------
+def x
+  3
+end
+
+x + 3
+--------------
+y = 3
+y + 3
+--------------
+
+(let name arg1:t1 arg2:t2...argx:tx = expr:t):t1->t->..->tx->t
+(let name = expr:t):t
+
+(let add3 x:int = x:int + 3): int->int
+
+let f a b c d = if true then a > b else c > d;;
+arg1: a: 'a
+arg2: b: 'a
+arg3: c: 'b
+arg4: d: 'b
+return: bool
+ 'a -> 'a -> 'b -> 'b -> bool
+
