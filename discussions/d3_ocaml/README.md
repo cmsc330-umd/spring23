@@ -1,5 +1,9 @@
 # Discussion 3 - Friday, February 17<sup>th</sup>
 
+## Reminders
+1. Project 1b due Sunday, February 19th 11:59PM
+2. Quiz 1 regrade requests open until February 22nd 
+
 ## Introduction
 
 This week, we dive into Ocaml in discussions. We will be covering a breadth of material in Ocaml. Projects 2 to 4 are in Ocaml. So, please make sure you understand the fundamentals of the language as best as possible. Today, we will be covering **Ocaml expressions, values, and types, let bindings, let expressions, lists, pattern matching, tuples, variants, functions, and recursive functions `rec`**.
