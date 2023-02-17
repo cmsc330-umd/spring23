@@ -3,6 +3,7 @@
 ## Reminders
 1. Project 1b due Sunday, February 19th 11:59PM
 2. Quiz 1 regrade requests open until February 22nd 
+3. Quiz 2 **next Friday**, February 24th **in discussion** 
 
 ## Introduction
 
