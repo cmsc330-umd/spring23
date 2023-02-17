@@ -6,7 +6,7 @@
 
 ## Introduction
 
-This week, we dive into Ocaml in discussions. We will be covering a breadth of material in Ocaml. Projects 2 to 4 are in Ocaml. So, please make sure you understand the fundamentals of the language as best as possible. Today, we will be covering **Ocaml expressions, values, and types, let bindings, let expressions, lists, pattern matching, tuples, variants, functions, and recursive functions `rec`**.
+This week, we dive into Ocaml in discussions. We will be covering a breadth of material in Ocaml. Projects 2 to 4 are in Ocaml. So, please make sure you understand the fundamentals of the language as best as possible. Today, we will be covering **Ocaml expressions, values, and types, let bindings, let expressions, lists, pattern matching, functions, and recursive functions `rec`**.
 
 ## Part 1: Ocaml expressions, values, and types
 
@@ -20,7 +20,7 @@ Expressions are something that evaluates to some value. Example: `1 + 2`, `2 < 3
 
 ## Part 2: Let bindings and Let expressions
 
-Everything in Ocaml is expression , say `e`. So, everything will evaluate to some value of type, say `t`.
+Almost everything in Ocaml is an expression , say `e`. An expression will evaluate to some value of type, say `t`.
 
 Examples:  
 - `1: int`
@@ -110,7 +110,7 @@ let rec factorial num =
     if num = 1 then 1 else num * (factorial (num - 1)) (* int -> int *)
 ```
 
-## Part 4: Lists, Tuples, Variants
+## Part 4: Lists
 
 Lists are analogous to arrays to other languages with a difference that the Ocaml lists cannot be indexed. So, recursion is the prime way of iterating over a list and pattern-matching to access an element. The lists are homogenous in nature and the elements are separated by `;`. 
 
@@ -129,31 +129,6 @@ Let's practice with lists!
 
 #### `('a -> 'b) -> 'a -> 'b list -> 'b list`
 <br/>
-
-Tuples are fixed sized, heterogenous, ordered set of values. You cannot index tuples as well but can use pattern matching to access the desired element.
-
-Examples:
-```ocaml
-let my_tuple = (1,"string",true);;
-let my_second_tuple = [1, 2, "yes, this syntax is also valid"];; (* notice the brackets *)
-let my_tuple_func a b c = (a, b, c);; 
-```
-
-Let's practice with tuples!
-
-#### `int -> int -> int * int`
-#### `int -> int -> int * bool * int`
-<br/>
-
-Variants are beautifications of a certain type of existing data type. It is used to create customs types. Think of it like renaming a particular representation of values.
-
-Examples:
-```ocaml
-type color = Red | Green | Blue;;
-let colors = [Red; Green; Red; Red];;
-type linked_list_node = TerminalNode of int | IntermediateNode of int * linked_list_node;;
-let d = IntermediateNode(8, IntermediateNode(9, TerminalNode(10)));;
-```
 
 ## Part 5: Pattern matching
 
@@ -189,16 +164,4 @@ let check_min_len lst = match lst with
 | a :: b :: t -> "at least two"
 | a :: b :: c :: t -> "at least three"
 | _ -> "at least four";;
-```
-
-In the same manner, you can pattern-match a tuple.
-
-```ocaml
-let get_nth_element tup index = match tup with
-(a, b, c, d) when index = 0 -> a 
-| (a, b, c, d) when index = 1 -> b 
-| (a, b, c, d) when index = 2 -> c 
-| (a, b, c, d) when index = 3 -> d;;
-
-get_nth_element (2, 4, 6, 8) 3;; (* will return 8 *)
 ```
