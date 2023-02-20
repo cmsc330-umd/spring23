@@ -100,6 +100,7 @@ Implement the following functions that do not require recursion. Accordingly, th
 # Part 2: Recursive Functions
 
 Implement the following functions using recursion. You will lose points if this rule is not followed.
+If you create a recursive helper function, the main function that calls the recursive helper does not have to be recursive/have the `rec` keyword in its function header.
 
 #### `fibonacci n`
 
