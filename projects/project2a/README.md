@@ -141,7 +141,7 @@ this function does not have to be implemented in this way.
   is_prime 5 = true
   is_prime 60 = false
   is_prime 61 = true
-  is_prime -2 = false
+  is_prime (-2) = false
   ```
 
 #### `maxFuncChain init funcs`
