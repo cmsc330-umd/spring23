@@ -21,16 +21,17 @@ let expressions
   (let x a1:'a a2:'b ...= e1:'tx in x):'a->'b->...->'ty
   (let x = e1:'a in e2:'b):'b
 
+function calls
+  (f x1 x2 ...)
+  which has type:
+  (f: 'a 'b ... -> 't x1:'a x2:'b ...):'t
+
 list things
   ([e1:'a;e2:'a;...]):'a list
   (e1:'a :: e2:'a list):'a list
 
 tuples
   ((e1:'a,e2:'b,...)):'a * 'b *...
-
-variants
-  (type x = A|B|...): x
-  (type x = {var1:'a;var2:'b;...}: x
 
 pattern match
   (match e1:'a with
@@ -44,7 +45,15 @@ constants
   1.3:float
   true:bool
   "String":string
+  (fun x -> x + x):int -> int
 
+variants (not expression. Is a definition)
+  (type x = A|B|...):x
+  (type x = {var1:'a;var2:'b;...}:x
+
+let bindings (not expressions, different than let expressions)
+(let x = expr1:'t):'t;;
+(let f x:'a y:'b ...  = expr1:'t) 'a -> 'b -> ... 't);;
 
 let x = 5;;
 x + 6;;
