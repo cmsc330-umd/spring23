@@ -169,6 +169,8 @@ of
 
 # Part 3: Lists
 
+These may be implemented recursively, but it is not required.
+
 #### `reverse lst`
 
 - **Type**: `'a list -> 'a list`
@@ -256,6 +258,7 @@ of
 # Part 4: Higher Order Functions
 
 Write the following functions using `map`, `fold`, or `fold_right` as defined in the file `funs.ml`. You **must** use `map`, `fold`, or `fold_right` to complete these functions, so none of the functions in Part 4 should be defined using the `rec` keyword. You also may not create recursive helper functions. You will lose points if this rule is not followed. 
+You are allowed to use previously defined non-recursive functions, but you should not need to.
 
 #### `is_present lst x`
 
