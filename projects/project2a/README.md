@@ -129,9 +129,7 @@ If you create a recursive helper function, the main function that calls the recu
   
 #### `is_prime x`
 - **Type**: `int -> bool`
-- **Description**: Returns whether or not `x` is prime.  Note that all negative numbers are non-prime. There are many ways to determine
-if a number is prime (for example, [Wilson's Theorem](https://en.wikipedia.org/wiki/Wilson%27s_theorem)). While we provide this resource, note that
-this function does not have to be implemented in this way.
+- **Description**: Returns whether or not `x` is prime.  Note that all negative numbers are non-prime.
 - **Examples**:
   ``` ocaml
   is_prime 1 = false
