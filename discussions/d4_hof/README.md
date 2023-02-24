@@ -2,15 +2,11 @@
 
 ## Reminders
 1. Project 2a due February 26th 11:59PM
-2. Quiz 2 **date moved** to next Friday, February 30th in discussion (see [Piazza](https://piazza.com/class/lctd1gtoyd76m8/post/801) for details)
+2. Quiz 2 **date moved** to next Friday, March 3rd in discussion (see [Piazza](https://piazza.com/class/lctd1gtoyd76m8/post/801) for details)
 
 ## Introduction
 
 Today, we'll be covering `map` and `fold`, as well as an example of a custom data type. 
-
-## Reminders:
-- Quiz 2 is next week, March 3rd!
-- Project 2a is due February 26th!
 
 ## Part 1: Map
 
