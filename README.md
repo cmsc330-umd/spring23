@@ -13,3 +13,4 @@ List of discussions:
 + [Discussion 1 - Ruby](https://github.com/cmsc330-umd/spring23/tree/main/discussions/d1_ruby)
 + [Discussion 2 - Ruby Part 2](https://github.com/cmsc330-umd/spring23/tree/main/discussions/d2_ruby2)
 + [Discussion 3 - OCaml](https://github.com/cmsc330-umd/spring23/tree/main/discussions/d3_ocaml)
++ [Discussion 4 - Higher Order Functions](https://github.com/cmsc330-umd/spring23/tree/main/discussions/d4_hof)
