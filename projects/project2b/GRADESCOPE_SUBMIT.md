@@ -16,7 +16,7 @@ To install the new `submit` command complete the following steps:
   
 ## Using the new submit command
 
-First make sure all your changes are pushed to github using then `git add`, `git commit`, and `git push` commands.
+First make sure all your changes are pushed to github using the `git add`, `git commit`, and `git push` commands.
 
 Next, to submit your project using the new submit command you can run `submit` from your project directory.
 
