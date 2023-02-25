@@ -22,7 +22,7 @@ You can interactively test your code by running `dune utop src`, which will incl
 
 ## Part 1: Database Design
 
-Create a program that stores `person`s in a database which can later be querried. 
+Create a program that stores `person`s in a database which can later be queried. 
 A person is defined as follows:
 
 ```ocaml
@@ -39,7 +39,7 @@ Given a piece of data like `Person`, you will implement the following operations
   - **Type**: `db`
   - **Description**: creates and returns an empty database
 
-### `insert person databse`: 
+### `insert person database`: 
   - **Type**: `person -> db -> db`
   - **Description**: given a person and a database, insert the person into the database and return the updated database. If the person already exists in the database, there should be duplicate entries of the person after performing the insert function.
   - **Examples**:
@@ -70,7 +70,7 @@ Its type is `person -> person -> int`. It follows the typical -1, 0, 1 conventio
 
 ### `sort comparator db`:
   - **Type**: `(person -> person -> int) -> db -> person list`
-  - **Description**: given a function and a db, sort the list of people based on the comparator and return in the form of a person list. You may use anything from the `Stdlib` or the `List` modules to help you.
+  - **Description**: given a comparator function and a db, sort the list of people based on the comparator and return in the form of a person list. You may use anything from the `Stdlib` or the `List` modules to help you.
    - **Examples**:
   ```ocaml
   let db1 = insert {name="Alice";age=23;hobbies=["Skiing";"golfing"]} newDatabase
@@ -100,7 +100,7 @@ The nice part about this modified English grammar/syntax is that we don't have
 ambiguity and it's easy to represent this as code. See below.
 
 #### Condition
-A `condition` is a restriction on the combination of age, name, and/or hobbies. We represent a condition as a type containing either a true/false value, a restriction on age, name or hobbies, or a logical operator that contains other conditions. The `condition` type will look like this:
+A `condition` is a restriction on the combination of age, name, and/or hobbies. We represent a condition as a type containing either a true/false value, a restriction on age, name, or hobbies, or a logical operator that contains other conditions. The `condition` type will look like this:
 ```ocaml
 type condition = 
   | True -> true
@@ -171,7 +171,7 @@ Other examples of valid `condition`s are:
 
 ## Part 2: Higher Order Functions On Trees
 
-***This part is independent of the Part 1***
+***This part is independent of Part 1***
 
 Given the type of a binary tree, implement `fold` and `map` operations.
 
@@ -225,7 +225,7 @@ Given this type implement the following functions
    
 ### `in_order tree`
   - **Type**: `('a tree -> 'a list)`
-  - **Description**: Using `tree_fold`, write a function that will return a list containing the in order traversal of the tree.
+  - **Description**: Using `tree_fold`, write a function that will return a list containing the inorder traversal of the tree.
   - **Examples**:
   ```ocaml
   let treea = Node(Node(Leaf, 1, Leaf), 2, Node(Leaf, 3, Leaf))
@@ -237,7 +237,7 @@ Given this type implement the following functions
 
 ### `pre_order tree`
   - **Type**: `('a tree -> 'a list)`
-  - **Description**: Using `tree_fold`, write a function that will return a list containing the pre order traversal of the tree.
+  - **Description**: Using `tree_fold`, write a function that will return a list containing the preorder traversal of the tree.
   - **Examples**:
   ```ocaml
   let treea = Node(Node(Leaf, 1, Leaf), 2, Node(Leaf, 3, Leaf))
@@ -249,7 +249,7 @@ Given this type implement the following functions
    
 ### `compose tree`
   - **Type**: `(('a -> 'a) tree -> 'a -> 'a)`
-  - **Description**: This function will take in a tree that contains `('a -> 'a)` functions as the value in the nodes and returns a function that is the *in order* composition of the nodes. You must implement this function using `tree_fold`.
+  - **Description**: This function will take in a tree that contains `('a -> 'a)` functions as the value in the nodes and returns a function that is the *inorder* composition of the nodes. You must implement this function using `tree_fold`.
   - **Examples**:
   Consider the following diagram of a tree.
 ```  
@@ -307,9 +307,9 @@ Given this type implement the following functions
   ```
 ## Part 3: Generating Trees
 #### Options
-Below is the type for an `option` type, which indicates the presence or absence of a value of type `'a`:
+An `option` type is a built in variant that indicates the presence or absence of a value of type `'a`: 
   ```ocaml
-  type 'a t = 'a option = 
+  type 'a option = 
   | None
   | Some of 'a
   ```
@@ -317,7 +317,7 @@ Below is the type for an `option` type, which indicates the presence or absence 
 ##### Note: The functions **`tree_init`** and **`split`** are **optional** and will not be tested on, but are recommended helper functions for `from_pre_in`.
 ### `tree_init f v`
   - **Type**: `('a -> ('a * 'b * 'a) option) -> 'a -> 'b tree)`
-  - **Description**: A generator `f` is a function that returns 3 values: `v1`, `v2`, `v3`. Using the definition of type `Option`, `f` and an init value `v`, build a tree that has a root node with value `v2` and a new generated left subtree with init value `v1` and a new generated right subtree with init `v3`.
+  - **Description**: A generator `f` is a function that returns a tuple of 3 values: (`v1`, `v2`, `v3`). Using the definition of type `Option`, `f` and an init value `v`, build a tree that has a root node with value `v2` and a new generated left subtree with init value `v1` and a new generated right subtree with init `v3`.
   If `f` returns `None`, a `Leaf` will be placed into the tree.
   - **Examples**:
   ```ocaml
