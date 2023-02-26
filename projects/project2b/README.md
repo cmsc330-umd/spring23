@@ -31,9 +31,9 @@ type person = { name: string;
                 hobbies: string list }
 ```
 
-You must come up with your own implementation for the data type for the database `db`. As provided above, `Person` includes `name`, `age`, and `hobbies`, which is the data we would like to add to our database.
+You must come up with your own implementation for the data type for the database `db`. As provided above, `person` includes `name`, `age`, and `hobbies`, which is the data we would like to add to our database.
 
-Given a piece of data like `Person`, you will implement the following operations on the database:
+Given a piece of data like `person`, you will implement the following operations on the database:
 
 ### `newDatabase`
   - **Type**: `db`
