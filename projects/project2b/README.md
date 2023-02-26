@@ -12,7 +12,7 @@ The goal of this project is to increase your familiarity with programming in OCa
 In addition to your own code, you may use library functions found in the [`Stdlib` module](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Stdlib.html) and the `List` module. You **may not** (under threat of a grading penalty) use any other submodules of `Stdlib` or any imperative  features of Ocaml unless otherwise stated. You **may not** make any function in part 2 recursive unless the function already has the `rec` keyword.
 
 ### Testing & Submitting
-Submit by either running `gradescope-submit` or `submit` (if you have installed then new version of gradescope submit on your computer).
+Submit by either running `gradescope-submit` or `submit` (if you have installed the new version of gradescope submit on your computer).
 
 Instructions to use the new optional submit process can be found [here](./GRADESCOPE_SUBMIT.md).
 
@@ -83,7 +83,7 @@ Its type is `person -> person -> int`. It follows the typical -1, 0, 1 conventio
 When we are describing something we typically link together and modify different 
 descriptors with common words like *and*, *or*, *not*. For example: "His name 
 is Cliff AND he is older than 18 AND (he likes Lego OR he likes chocolate)." 
-Here I added parenthesis to remove ambiguity. If we changed the syntax of this
+Here I added parentheses to remove ambiguity. If we changed the syntax of this
 sentence we can remove some of the ambiguity: (and his name is cliff, and he is
 is older than 18, or he likes Lego, he likes chocolate). Here, while it 
 looks weird and sounds weird if you were to say it out loud, by defining words
