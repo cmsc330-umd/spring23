@@ -103,8 +103,8 @@ ambiguity and it's easy to represent this as code. See below.
 A `condition` is a restriction on the combination of age, name, and/or hobbies. We represent a condition as a type containing either a true/false value, a restriction on age, name, or hobbies, or a logical operator that contains other conditions. The `condition` type will look like this:
 ```ocaml
 type condition = 
-  | True -> true
-  | False -> false
+  | True
+  | False
   | Age of (int -> bool)
   | Name of (string -> bool)
   | Hobbies of (string list-> bool)
