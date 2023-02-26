@@ -265,7 +265,7 @@ Given this type implement the following functions
 | v(x) |              | y(x) |
 +------+              +------+
 ```
-  The rusult of calling `compose` on this function would be equivalent to `(fun x -> h (y (f (g (v x)))))`
+  The result of calling `compose` on this function would be equivalent to `(fun x -> h (y (f (g (v x)))))`
   ```ocaml
   let function_tree =
     Node(
