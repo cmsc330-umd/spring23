@@ -13,6 +13,11 @@ To install the new `submit` command complete the following steps:
   2. Install the new version of submit by running: `opam install gradescope_submit`
   
      *Note: This will not conflict with the `gradescope_submit` command from previous projects*
+     
+## Link Github to Gradescope
+
+Log into your gradescope account and go to your account settings. Scroll down to the `Linked Accounts` section. If you do not already
+have your Github account linked here, click the `Link a GitHub account` button and log into your Github account.
   
 ## Using the new submit command
 
