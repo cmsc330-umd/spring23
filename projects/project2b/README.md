@@ -9,12 +9,12 @@ Points: 40% public, 30% semipublic, 30% secret
 The goal of this project is to increase your familiarity with programming in OCaml and give you more practice with higher order functions and user-defined types. You will write a number of small functions that will use higher order functions operating over a tree structure, and then you will implement a program that simulates a database.
 
 ### Ground Rules
-In addition to your own code, you may use library functions found in the [`Stdlib` module](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Stdlib.html) and the `List` module. You **may not** (under threat of a grading penalty) use any other submodules of `Stdlib` or any imparative  features of Ocaml unless otherwise stated. You **may not** make any function in part 2 recursive unless the function already has the `rec` keyword.
+In addition to your own code, you may use library functions found in the [`Stdlib` module](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Stdlib.html) and the `List` module. You **may not** (under threat of a grading penalty) use any other submodules of `Stdlib` or any imperative  features of Ocaml unless otherwise stated. You **may not** make any function in part 2 recursive unless the function already has the `rec` keyword.
 
 ### Testing & Submitting
 Submit by either running `gradescope-submit` or `submit` (if you have installed then new version of gradescope submit on your computer).
 
-Instructions to use the new optional submit process can be found [here](./GRADESCOPE_SUBMIT.md)
+Instructions to use the new optional submit process can be found [here](./GRADESCOPE_SUBMIT.md).
 
 To test locally, run `dune runtest -f`. Besides the provided public tests, you will also find the file `student.ml` in `test/student/`, where you'll be able to add `OUnit` tests of your own. More detailed information about writing tests can be found [here](https://www.youtube.com/watch?v=C36JnAcClOQ).
 
