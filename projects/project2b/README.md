@@ -136,7 +136,8 @@ Other examples of valid `condition`s are:
  - **Examples**:
   ```ocaml
   query condition1 db2 = [{name="Bob";age=42;hobbies=["Skiing";"Cooking"; "Legos"]}]
-  query True db2 = db2
+  (* Order does not matter in this example *)
+  query True db2 = [{name="Bob";age=42;hobbies=["Skiing";"Cooking"; "Legos"]}; {name="Alice";age=23;hobbies=["Skiing";"golfing"]}]
   query False db2 = []
   ```
    
