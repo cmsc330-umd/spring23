@@ -26,10 +26,10 @@ To interpret these conditions, we can think of “unwrapping” the condition ba
 
 ```ml
 let rec is_true condition = match condition with
-| True -> true
-| False -> false
-| And(x,y) -> (is_true x) && (is_true y)
-| Or(x,y) -> (is_true x) || (is_true y)
-| Not(x) -> not (is_true x)
-| If(x,y,z) -> if (is_true x) then (is_true y) else (is_true z)
+  | True -> true
+  | False -> false
+  | And(x,y) -> (is_true x) && (is_true y)
+  | Or(x,y) -> (is_true x) || (is_true y)
+  | Not(x) -> not (is_true x)
+  | If(x,y,z) -> if (is_true x) then (is_true y) else (is_true z)
 ```
