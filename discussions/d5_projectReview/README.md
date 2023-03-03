@@ -18,7 +18,7 @@ type condition =
 ```
 Notice how this definition is recursive. The “base cases” are True and False, and the other conditions have conditions within them. Some examples of conditions are:
 - `Or(Not(True), False)`
-- `And(Or(True, Not(False), True))`
+- `And(Or(True, Not(False)), True)`
 - `If(True, Or(True,False), And(False,Not(True)))`
 - `If(And(True, True), Or(Not(False), True), False)`
 
@@ -28,8 +28,8 @@ To interpret these conditions, we can think of “unwrapping” the condition ba
 let rec is_true condition = match condition with
 | True -> true
 | False -> false
-| And(x,y) -> is_true(x) && is_true (y)
-| Or(x,y) -> is_true(x) || is_true (y)
-| Not(x) -> not is_true(x)
-| If(x,y,z) -> if is_true(x) then is_true (y) else is_true(z)
+| And(x,y) -> (is_true x) && (is_true y)
+| Or(x,y) -> (is_true x) || (is_true y)
+| Not(x) -> not (is_true x)
+| If(x,y,z) -> if (is_true x) then (is_true y) else (is_true z)
 ```
