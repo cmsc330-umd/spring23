@@ -28,7 +28,7 @@ Several helper functions have been provided for you, as detailed at the end of t
 
 The procedure for testing this project is the same as the previous project. `dune` handles the majority of the work but, an environment variable must be set for `dune` to know where to find the precompiled binary files distributed with the project.
 
-For this project, you must have OCaml version 4.12.0. To make sure you have the correct version of OCaml, run `ocaml --version`. If your version of OCaml is not 4.12.0, refer to the project 0 instructions to update your version.
+For this project, you must have OCaml version >= 4.12.0. To make sure you have the correct version of OCaml, run `ocaml --version`. If your version of OCaml is not 4.12.0 or later, refer to the project 0 instructions to update your version.
 
 Public and student tests can be run using the same `dune` command that you used in the previous projects but, you need to set the environment variable `OCAMLPATH` before running the command. The full command is now `env OCAMLPATH=dep dune runtest -f`. Setting `OCAMLPATH` tells `dune` where it can find the functions over sets that we have provided. You will need to provide this environment variable for every `dune` command so you may want to add it to your environment once by running `OCAMLPATH=dep` as separate command before using `dune`. We have also provided a shell script `test.sh` that runs the command given above.  To run this, type `sh test.sh` at a terminal.
 
@@ -44,7 +44,9 @@ You are not required to do this, but it may be helpful in debugging your code. O
 
 ### Submitting
 
-You will submit this project to Gradescope using `gradescope-submit`.  Alternatively, you can manually submit the project on [Gradescope](https://www.gradescope.com) by clicking on the "Project 3" assignment and **ONLY** submit your `nfa.ml` file and `regexp.ml`.  You must submit both of these files every time, and any other files will be ignored.
+You will submit this project to Gradescope using `gradescope-submit` or `submit`. Alternatively, you can manually submit the project on [Gradescope](https://www.gradescope.com) by clicking on the "Project 3" assignment and **ONLY** submit your `nfa.ml` file and `regexp.ml`.  You must submit both of these files every time, and any other files will be ignored.
+
+Instructions to use the new optional submit process can be found [here](./GRADESCOPE_SUBMIT.md)
 
 ### Academic Integrity
 
