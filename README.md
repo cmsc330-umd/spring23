@@ -8,7 +8,7 @@ List of projects:
 + [Project 1b (updated README/tests)](https://github.com/cmsc330-umd/spring23/tree/main/projects/project1b)
 + [Project 2a](https://classroom.github.com/a/JaeYcDGO) ([README](https://github.com/cmsc330-umd/spring23/tree/main/projects/project2a))
 + [Project 2b](https://classroom.github.com/a/GCQAZiE4) ([README](https://github.com/cmsc330-umd/spring23/tree/main/projects/project2b))
-+ [Project 2b](https://classroom.github.com/a/CEG7_xgA) ([README](https://github.com/cmsc330-umd/spring23/tree/main/projects/project3))
++ [Project 3](https://classroom.github.com/a/CEG7_xgA) ([README](https://github.com/cmsc330-umd/spring23/tree/main/projects/project3))
 
 List of discussions:
 + [Discussion 0 - Git](https://github.com/cmsc330-umd/spring23/tree/main/discussions/d0_git)
