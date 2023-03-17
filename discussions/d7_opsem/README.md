@@ -1,4 +1,4 @@
-# Discussion 6 - Friday, March 17<sup>th</sup>
+# Discussion 7 - Friday, March 17<sup>th</sup>
 
 ## Reminders
 1. Project 3 is due on April 5th
