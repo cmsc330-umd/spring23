@@ -18,3 +18,4 @@ List of discussions:
 + [Discussion 4 - Higher Order Functions](https://github.com/cmsc330-umd/spring23/tree/main/discussions/d4_hof)
 + [Discussion 5 - Project Review](https://github.com/cmsc330-umd/spring23/tree/main/discussions/d5_project_review)
 + [Discussion 6 - NFA and DFA](https://github.com/cmsc330-umd/spring23/tree/main/discussions/d6_nfa_dfa)
++ [Discussion 7 - Operational Semantics](https://github.com/cmsc330-umd/spring23/tree/main/discussions/d7_opsem)
