@@ -2,6 +2,7 @@
 
 ## Reminders
 1. Project 3 is due on April 5th
+2. Quiz 3 regrade requests open until April 7th
 
 ## Context Free Grammars
 
