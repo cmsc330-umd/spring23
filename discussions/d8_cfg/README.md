@@ -16,8 +16,9 @@ Leftmost derivation of 1 + 2 + 3
 * S -> S + S -> S + S + S -> 1 + S + S -> 1 + 2 + S -> 1 + 2 + 3
 * S -> S + S -> 1 + S -> 1 + S + S -> 1 + 2 + S -> 1 + 2 + 3 works too
 
-Note: If there are 2 derivations for the same string, what does that mean? The grammar is ambiguous.
-  * To show that a grammar is ambiguous, show 2 different derivations for the same string.
+Note: If there are 2 leftmost derivations or 2 rightmost for the same string, what does that mean? The grammar is ambiguous.
+  * To show that a grammar is ambiguous, show 2 different leftmost or rightmost derivations for the same string.
+  * You must give 2 leftmost or 2 rightmost derevations, not one leftmost and one rightmost
   * It's hard to know whether a grammar is ambiguous or not, but be suspicious if you see something along the lines of S -> SS, S -> SSS, S -> S+S, etc.
   
 ### More CFG Practice
