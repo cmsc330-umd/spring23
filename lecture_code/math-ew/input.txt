@@ -1,0 +1,40 @@
+^ 2 sq 3
+=> 9
+E -> n
+    |+ E E
+    |* E E
+    |/ E E
+    |- E E
+    |^ E E
+    |sq E
+
+e1 -> v1  e2 -> v2  v3 is v1 ^ v2
+----------------------------------
+  ^ e1 e2 -> v3
+
+e1 -> v1  e2 -> v2  v3 is v1 + v2
+----------------------------------
+  + e1 e2 -> v3
+
+e1 -> v1  e2 -> v2  v3 is v1 / v2
+----------------------------------
+  / e1 e2 -> v3
+
+lexer: string -> token list
+do all the words exist in the lexicon
+valid:
+the person ran fast, person the fast ran
+invlid: the sdfj truck
+
+parser: token list -> ast
+is sentence grammatically correct
+valid:
+  the boy ran fast, the large red truck
+invalid:
+  ran fast the boy, the truck red
+
+evaluator: ast -> value
+does it makes sense
+valid: the boy ran fast
+invalid: 
+  colorless green ideas sleep furiously
