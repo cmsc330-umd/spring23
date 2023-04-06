@@ -3,7 +3,7 @@ Soft Deadline: April 12th, 2023 at 11:59 pm
 
 Due: April 23st, 2023 at 11:59pm (late April 24nd, *10% penalty*)
 
-**Even though both parts of this project are due November 27th we strongly suggest you to start early! Project 4b relies on this part of the project working. We recommend completing this portion of the project by April 12th for a comfortable schedule.**
+**Even though both parts of this project are due April 23rd we strongly suggest you to start early! Project 4b relies on this part of the project working. We recommend completing this portion of the project by April 12th for a comfortable schedule.**
 
 Points: 48 public, 52 semipublic
 
