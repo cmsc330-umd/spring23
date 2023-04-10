@@ -223,8 +223,8 @@ Being able to modify the placeholder is made possibly by using references; this 
 
 - `extend env x v` produces an environment that extends `env` with a mapping from `x` to `v`
 - `lookup env x` returns `v` if `x` maps to `v` in `env`; if there are multiple mappings, it chooses the most recent.
-- `extend_tmp x` produces an environment that extends `env` with a mapping from `x` to a temporary placeholder.
-- `update env x v` produces an environment that updates `env` in place, modifying its most recent mapping for `x` to be `v` instead (removing the placeholder).
+- `ref_extend_tmp x` produces an environment that extends `env` with a mapping from `x` to a temporary placeholder.
+- `ref_update env x v` produces an environment that updates `env` in place, modifying its most recent mapping for `x` to be `v` instead (removing the placeholder).
 
 However since references were not covered, we also gave you a variation of these functions that do not use references. If you choose to not use references you will need the `value` type given in the `eval.ml` file as well as the `remove` function that removes a variable,binding pair from an environment.
 
