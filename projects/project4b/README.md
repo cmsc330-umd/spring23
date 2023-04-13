@@ -22,7 +22,7 @@ In your code, you may use any standard library functions, but the ones that will
 You can submit by either running `gradescope-submit` or `submit` (if you have installed the new version of gradescope submit on your computer).
 Instructions to use the new optional submit process can be found [here](./GRADESCOPE_SUBMIT.md)
 
-You can also manually submit to [Gradescope](https://www.gradescope.com). *You may only submit the `eval.ml` file.*
+You can also manually submit to [Gradescope](https://www.gradescope.com). *You may only submit the `eval.ml`, `lexer.ml`, `parser.ml` files.*
 
 You do not need a working parser and lexer to implement this project --- all testing can be done on abstract syntax trees directly.
 
