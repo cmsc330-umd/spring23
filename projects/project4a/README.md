@@ -1,7 +1,7 @@
 # Project 4a: MicroCaml Lexer and Parser
 Soft Deadline: April 12th, 2023 at 11:59 pm
 
-Due: April 23st, 2023 at 11:59pm (late April 24nd, *10% penalty*)
+Due: ~~April 23st, 2023 at 11:59pm (late April 24nd, *10% penalty*)~~ April 30th, 2023 at 11:59pm (late May 1st, *10% penalty*)
 
 **Even though both parts of this project are due April 23rd we strongly suggest you to start early! Project 4b relies on this part of the project working. We recommend completing this portion of the project by April 12th for a comfortable schedule.**
 
