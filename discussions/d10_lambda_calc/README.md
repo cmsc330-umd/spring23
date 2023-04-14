@@ -3,8 +3,7 @@
 ## Reminders
 * Quiz 4 is **today**
 * Exam 2 is on April 20th
-* Project 4a due April 23rd
-* Project 4b **deadline extended** to April 30th (10% extra credit if you submit by initial due date of April 23rd)
+* Project 4a/4b **deadline extended** to April 30th (10% extra credit if you submit by initial due date of April 23rd)
 
 ## Lambda Calculus
 
