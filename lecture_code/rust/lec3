@@ -1,0 +1,107 @@
+RUST
+
+Rust aims or exists to solve memory safety issues that C has
+java, ruby, ocaml,
+
+rust 
+----------C
+asm
+
+avoid things like dangling pointers, double free, data races
+
+BLOCKS
+let z = {stmt* e?}
+        {}
+        {let x = 3;}
+
+if n ==0
+  {1}
+else
+  {let x = fact(n-1);
+   x *n
+  }
+
+if n == 0
+  {let a = 3;}
+
+this is syntatic sugar of
+
+if n == 0
+  {let a = 3;}
+else 
+  {}
+
+
+by default, things in rust are immutatable
+{ let x = 37;
+  let y = x + 5;
+  y
+}
+
+{let x = 37;
+ x = x + 5; <- rust will yell at you
+ x
+}
+  
+{ let x = 37;
+  let x = x + 5;
+  x
+}
+
+{ let mut x = 37;
+  x = x + 5;
+  x
+}
+
+{ let x:u32 = -1; <- rust will throw a tantrum
+  x
+}
+
+fn name(params) -> t {
+
+}
+params: x1:t1,x2:t2,x3:t3,...
+
+if e b1 else b2
+
+scalar or flat types
+integers: i8,i16,i32,i64, isize (sizeof(int))
+unsigned: u8, u16, u32, u64, usize
+chars: unicode character
+booleans: true,false
+floats: f32, f64
+
+structured types
+tuples: (3,true), (4,3), (isize,boolean), ()
+strings: "hello there", "general kenobi"
+arrays: constant length
+        [10,20,30]: [i32]
+        [10,20,30]: [i32,3]
+
+loops:
+  loop {} : run infinite until break
+  while e {} 
+
+
+
+  for pattern in e {}
+//fn distance((ax,ay):(f32,f32),(bx,by):(f32,f32)) -> f32{
+fn distance(a:(f32,f32),b:(f32,f32)) -> f32{
+  let (ax,ay) = a;
+  let bx = b.0;
+  let by = b.1;
+
+  dx = ax - bx;
+  dy = ay - by;
+
+  (dx *dx - dy*dy).sqrt()
+}
+
+let nums = [10,20,30];
+for item in nums.iter(){
+  println!("item is {}", item);
+}
+for (ax,bx) in [(12,23)].iter(){
+  
+}
+

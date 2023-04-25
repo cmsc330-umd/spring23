@@ -1,0 +1,141 @@
+Rust
+
+Rust exists to solve memory safety issues that C has
+
+We want to avoid things like dangling pointers, double free, 
+data races
+
+syntax-wise pull from C and ocaml
+
+// int fact(int n){...}
+fn fact(n:i32) -> i32{
+  if n == 0
+    {1}
+  else
+  {
+    let x = fact(n-1);
+    x * n
+  }
+}
+
+fn main(){
+  let res = fact(6);
+  println!("fact(6) = {}",res)
+}
+
+let rec fact n = 
+  if n = 0 then 1 else let x = fact (n-1) in x * n
+
+BLOCKS
+By default, things are immutable in Rust
+
+{stmt* e?}
+{1}
+{let x = 3; x}
+
+let x = x + 1;
+
+{}
+
+What do the following blocks evaluate to?
+{let x = 37;
+ let y = x + 5;
+ y;
+}
+
+{let x:u32 = -1; <- rust will yell at you
+ let y = x + 5;
+ y
+}
+
+{let x = 3;
+ x = x + 5; <- rust will yell at you
+ x
+}
+
+{let x = 3;
+ let x = x + 5; 
+ x
+}
+
+{ let mut x = 3;
+  x = x + 5;
+  x
+}
+
+{if n ==0 
+  {1}
+else
+{ let x = 3;
+  let y = x + 5;
+  y;
+}
+}
+
+if n == 0
+  {let x = 4;x}
+else
+  {}
+
+fn name(params) [-> t] {
+  {}
+}
+params: x1:t1, x2:t2,....
+
+scalar (flat) types
+integers: i8, i16, i32, i64, isize (sizeof(int))
+unsigned: u8, u16, u32, u64, usize
+char: unicode character
+boolean: true, false
+float: f32, f64
+
+structured type
+tuples: (t1,t2,t3,..),(e1,e2,e3,...), ()
+strings: "hello there", "general kenobi"
+arrays: constant length, n:[i32], x:[i16,6]
+vector: varaible length
+fn sort(x:[i32,8]) -> [i32,8]
+
+pattern matching is supported
+
+loop {}
+while e {}
+for pattern in e {}
+
+fn fact(n:u32) -> u32{
+  let mut x = n;
+  let mut a = 1;
+  loop {
+    if x <= 1 {break;}
+    a = a * x;
+    x = x - 1;
+  }
+  a
+}
+
+fn fact(n:u32) -> u32{
+  let mut x = n;
+  let mut a = 1;
+  while x > 1{
+    a = a * x;
+    x = x - 1;
+  }
+  a
+}
+
+for pattern in e {}
+//fn distance((ax,ay):(f64,f64),(bx,by):(f64,f64)) -> f64 {
+fn distance(a:(f64,f64),b:(f64,f64)) -> f64 {
+  let (ax,ay) = a;
+  let bx = b.0;
+  let by = b.1;
+  let dx = ax - bx;
+  let dy = ay - by;
+
+  (dx * dx + dy * dy).sqrt()
+}
+
+let num = [10;20;30];
+for item in num.iter(){
+  println!("the element is {}", item);
+}

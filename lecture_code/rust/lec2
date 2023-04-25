@@ -1,0 +1,136 @@
+RUST
+
+Rust exists to solve memery safety issues that c has
+
+Rust wants to avoid things like dangling pointers, double fees, 
+data races 
+
+fn fact(n:i32) -> i32 { 
+ if n == 0 
+  {1}
+else
+  {
+    let x = fact(n-1);
+    x * n
+  }
+}
+
+fn main(){
+  let res = fact(6);
+  println!("fact(6) = {}",res);
+}
+
+let rec fact n = 
+  if n = 0 then 1 
+  else let x = fact (n-1) in x * n
+
+By default, things are immutable in rust
+
+BLOCK
+let x = { stmt* e?}
+{}
+{let x = 5;}
+
+if e
+  b
+
+is syntatic sugar of
+if e 
+  b:() unit
+else
+  {}
+
+{if e 
+  b1 
+else 
+  b2}
+  
+{let x = 37;
+ let y = 5;
+ y
+}
+
+{let x:u32 = -1; <- rust will throw an tantrum
+ x
+}
+
+{ let x = 3; <- rust will yell at you 
+  x = x + 1;
+  x
+}
+
+{ let mut x = 3;
+  x = x + 1;
+  x
+}
+
+{ let x = 3;
+  let x = x + 1;
+  x
+}
+
+int myfunc(int x, float y, boolean z){...}
+fn myfunc(x:i32, y:f32, z:boolean) -> i32 {...}
+fn myfunc(params) -> t {
+
+}
+params: x1:t1,x2:t2,x3:t3,...
+
+if e b1 else b2
+
+scalar or flat type
+integers: i8, i16,i32,i64, isize (sizeof(int))
+unsigned: u8, u16, u32, u64, usize
+chars: unicode character
+booleans: true, false
+floats: f32, f64
+
+structured types
+tuples: (e1,e2) (t1,t2) x:(f32,f32), y:(boolean,i32,i8)
+strings: "hello there", "general kenobi" 
+arrays: they have constant length, x:[i32], y:[i32,7]
+let mut x = [10;20;30]; mutability refers to values in array, not array length
+vectors/slices: can have variable length 
+
+loop {...}
+while e {...}
+for pattern in e {...}
+
+fn fact(n:u32) -> u32{
+  let mut x = n;
+  let mut a = 1;
+  loop{
+    if x <= 1 {break;}
+    a = a * x;
+    x = x - 1;
+  }
+  a
+}
+
+
+fn fact(n:u32) -> u32{
+  let mut x = n;
+  let mut a = 1;
+  while x > 1{
+    a = a * x;
+    x = x - 1;
+  }
+  a
+}
+
+
+
+fn distance(a:(f32,f32),b:(f32,f32)) -> f32{
+  let (ax,ay) = a;
+  let bx = b.0;
+  let by = b.1;
+  
+  let dx = ax - bx;
+  let dy = ay - by;
+
+  (dx*dx - dy * dy).sqrt()
+}
+
+for item in [10;20;30].iter(){
+  println!("item is {}", item)
+}
