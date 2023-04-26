@@ -2,7 +2,7 @@
 
 ## Reminders
 * Quiz 4 is next week!
-* Exam 2 is on 4/20
+* Exam 2 is on 4/20 
 
 ## Coding Exercise
 * To go from source code to a running program, there are 3 steps (at least for our purposes):
