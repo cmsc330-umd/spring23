@@ -62,7 +62,7 @@ Modern language designed for concurrency; it's similar to C++ and OCaml, but doe
 * Also used for things like iteration; when looping through list, get a series of references to elements in list
 * One limitation: Can only either have `1 mutable ref` or `many immutable refs` at any given time
     * This prevents weird write errors
-* Exemplified by String class; `&str` is a read-only pointer to String, whereas String class is similar to array of chars
+* Exemplified by String struct; `&str` is a read-only string slice, whereas String struct is similar to array of chars
 
 Example with .iter(): 
 
