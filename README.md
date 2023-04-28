@@ -23,3 +23,5 @@ List of discussions:
 + [Discussion 7 - Operational Semantics](https://github.com/cmsc330-umd/spring23/tree/main/discussions/d7_opsem)
 + [Discussion 8 - Context Free Grammars](https://github.com/cmsc330-umd/spring23/tree/main/discussions/d8_cfg)
 + [Discussion 9 - Lexing, Parsing, Interpreting](https://github.com/cmsc330-umd/spring23/tree/main/discussions/d9_parsing)
++ [Discussion 10 - Lambda Calculus](https://github.com/cmsc330-umd/spring23/tree/main/discussions/d10_lambda_calc)
++ [Discussion 11 - Rust](https://github.com/cmsc330-umd/spring23/tree/main/discussions/d11_rust)
