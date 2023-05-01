@@ -243,7 +243,7 @@ eval_expr [] (Fun ("x", Fun ("y", Binop (And, ID "x", ID "y"))))
 
 ### FunctionCall
 
-The `FunctionCall` has two subexpressions. We evaluate the first to a `Closure(A,x,e)` (otherwise, a `TypeError` should be raised) and the second to a value *v*. Then we evaluate `e` (the closure's body) in environment `A` (the closure's environment), returning the result.
+The `FunctionCall` has two subexpressions. We evaluate the first subexpression to a `Closure(A,x,e)` (otherwise, a `TypeError` should be raised) and the second subexpression to a value *v*. Then we evaluate `e` (the closure's body) in environment `A` (the closure's environment), returning the result.
 
 ```ocaml
 eval_expr [] (FunctionCall (Value (Int 1), Value (Int 1))) (* TypeError "Not a function" *)
