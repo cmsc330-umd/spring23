@@ -200,7 +200,7 @@ Below we've listed some helpful links to functions you may want to consider usin
 Project Submission
 ------------------
 
-The easiest way to submit is to navigate to the project directory and run `make submit`.
+The easiest way to submit is to navigate to the project directory and run `gradescope-submit` in the root of the project 5 repository.
 
 If you submit another way, you must submit the files `basics.rs`, and `locator.rs` containing your solution. You may submit other files, but they will be ignored during grading. We will run your solution as individual tests just as in the provided public test file. **No tests will pass on the submit server if the project does not compile!**
 
