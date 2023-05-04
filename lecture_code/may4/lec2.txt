@@ -1,0 +1,222 @@
+teach to the quiz :(
+
+onwership
+let x = 5; //
+let y = x; //y has the value of 5
+let z = x + y;
+
+who is the owner of the value 5?
+y is a variable that is the owner of a value 5
+
+both x and y are variables that are the owners of values 5
+
+def: a value has a variable that is its owner
+
+flat types/scalar types (primitives) are copied and stored on the stack
+intgers
+unsinged values
+floats
+bools
+characters
+
+this is the case:
+|x:5 |
+|y:5 |
+|z:10|
+
+it is not the case:
+|x:5 |
+|y:x^|
+|z:10|
+
+
+borrowing
+let x = String::from("hello"); //x is the owner of hello and is a immutable reference to hello
+let y = &x; //y is a immutable reference here and it is not the owner of hello
+
+reference is simlar to a C pointer
+so x is a reference to the hello value, and is also the owner
+
+let mut x = String::from("hello")
+let z = &mut x;
+
+we are allowed, only 1 mutable reference at a time in rust
+after line 41 is executed, z is the mutable reference, and x is invalid until z goes out of scope 
+
+let mut x = String::from("hello")
+let z = &x; // z is a immutable reference to hello, and x is also immutable
+x.push_str("World") <- fails 
+because z is immutable and cannot treat x as mutable while there are immutable references
+...
+println("{}",z)
+
+let mut x = String::from("hello")
+{let z = &mut x; //z is the mutable reference
+  z.push_str("world") //we can do this
+  println("{}",x);  <- fails since z is a mutable reference and we cannot use x as a reference
+  println("{}",z);
+}
+println("{}",x);
+
+how many (im)mutable references to value _____ at line ____
+write code/fill in the blank, etc, -> where you need to borrow a a value
+does this code compile? 
+
+
+lifetimes
+{let z = &mut x; 
+  z.push_str("world") 
+  println("{}",z);
+  println("{}",x);  
+}
+println("{}",x);
+
+
+what is the lifetime of x?
+which has a shorter/longer lifetime? x or z?
+when does lifetime of z end?
+when does lifetime of x start?
+
+lifetimes in rust are complicated
+the reason we have lifetimes is to avoid dangling pointers
+
+that is, we want to make sure that any reference points to a valid segment of mem
+
+a lifetime is an extension of type in rust
+x+1 -> x:int
+y+3.14 -> y:float
+
+x:u32 with a lifetime of 'a
+y:f64 with a lifetime of 'b
+
+a:u32 is not the same as b:&'a u32 (u32 with a lifetime of 'a)
+similarly to how 
+int a is different to int* b;
+
+very much like ocaml does type inference
+let f x = x + 1 and ocaml infers x to be an int
+
+rust does "lifetime inference"
+fn longest(a:&str, b:&str) -> &str
+rust will try to infer a lifetime for these variables
+fn longest(a:&'a str, b:&'a str) -> &'a str
+
+
+1)compiler will assigned different lifetime parameters to each input
+fn foo(x:&'a u32)
+fn bar(x:&u32, b:&f32)
+then rust will infer 
+fn bar(x:&'a u32, b:&'b f32)
+2) if one lifetime parameter, then output has the same lifetime param
+fn foo(x:&u32) -> &u32
+rust will infer
+fn foo(x:&'a u32) -> &'a u32
+3) if multiple lifetime paramaters, AND one of params is self or &self, then output is same as (&)self
+fn bar(self,x:&u32, b:&f32) -> &bool
+rust will infer 
+fn bar('a self,x:&'b u32, b:&'c f32) -> &'a bool
+
+what happens when we have the following?
+fn bar(x:&u32, b:&f32) -> &bool
+rust will infer the following
+fn bar(x:&'a u32, b:&'b f32) -> &'? bool
+in this case, rust cires because it donesn't know what to do.
+we need to help out the rust compiler by making all lifetimes explict
+fn bar(x:&'a u32, b:&'b f32) -> &'a bool
+
+important to note: writing the explicit lifetimes only helps the rust compiler know what to look for. 
+It does not actually change the lifetimes of anything
+
+fn longest(a:&'a u32, b:&'a u32) -> &'a u32{
+  if a>b {a} else {b}
+}// this means that a and b live AT LEAST as long as the return value
+which means, a and b could have different lifetimes
+a lives longer than return
+b lives longer than return
+a and ret have the same lifetime
+b and ret have the same lifetime
+
+the only thing that will not allow this to compile, is if either a or b live shorter than ret
+^ above will compile
+
+we are dependent on the return value's type (lifetime)
+
+when we talk about lifetimes in rust then we can say that lifetimes are always relative to each other
+
+fn longest(a:&'a u32, b:&'b u32) -> &'a u32{
+  if a>b {a} else {b}//expecting a u32 type with a lifetime of 'a, but got instead a u32 type with a lifetime of 'b
+}
+this will not compile
+
+fn longest(a:&'a u32, b:&'b u32) -> String{
+  if a>b {a} else {a}
+  "hello"
+}
+this will compile
+
+1   let x = 4;  //x is created here so life begins
+2   let y = 3;  //y is created, so it born
+3   let z = x + y; //z is created, so into the world it comes
+4   println!("{}", z);//z is last used to be forgotten forever in a shallow grave
+5   println!("{}", y); //y is last used so it it life comes to end after this line
+6   println!("{}", x); //x is last used so the is the final breaths of x, it will soon die on line 7
+
+lifetimes: variable and values 
+
+
+
+
+rust, what is differnt from namespacing and methods
+                            String::from      "hello".len
+
+struct Rec{
+  width:u32,
+  height:u32,
+}
+
+methods and functions are not really the same. methods are functions associated with an object
+
+impl Rec{
+  fn area(&self) -> u64{
+    self.width * self.height
+  }
+}
+
+let r1 = Rec{width:5,height:10};
+println!("{}",r1.area())
+
+impl Rec{
+  pub fn numSides(){
+    4
+  } 
+}
+println!("A rec has {} number of sides", Rec::numSides);
+
+
+fn foo(x:u32) -> f64{
+  x as f64
+}
+
+
+String::from("hello")
+
+
+Random r = new Random()
+r.new_Int();
+
+Random.new_int();
+
+fn main(){
+  let x = String::from("hello");
+  let res;
+  {
+    let y = String::from("bye");
+    res = shortest(&x,&y);
+    let z = &x;
+  }
+  println!("{}",res);
+}this does not compile
+
+fn shortest(a:&'a u32, b:&'a u32) -> &'a u32{
+  if a > b {a} else {b}
+}

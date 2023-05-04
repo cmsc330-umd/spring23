@@ -1,0 +1,210 @@
+struct Rectangle{
+  height:u32,
+  width:u32,
+}
+
+struct Circle{
+  radius:f32;
+  circum:f64;
+}
+ struct Shape{
+  r:Rectangle,
+  c:Circle,
+ }
+
+impl Rectangle{
+  fn area(&self)->u64{
+    self.height * self.width
+  }
+}
+
+impl Circle{
+  fn area(&self) -> f64{
+    self.radius * self.radius * 3.14
+  }
+}
+
+let r1 = Rectangle{width:5,height:10,};
+let a = r1.area();
+println!("{}",a);
+
+pub trait polygon{
+  fn perimeter(&self) -> u32{
+    -1
+  }
+}
+
+impl polygon for Rectangle{
+  fn perimeter(&self)-> u32{
+    self.height * 2 + self.width * 2
+  }
+}
+
+impl polygon for Circle{
+  fn perimeter(&self) -> u32{
+    self.circum as u32
+  }
+}
+
+objects has methods
+method: a function that is associated with a partcular object
+
+drop
+copy
+clone
+
+let x = 5;
+
+for i in [1,2,3,4]
+  puts i
+
+
+for value in arr{
+  println!("{}",value);
+}
+
+type i = a.iterator()
+
+while i.hasNext(){
+  i.next()
+}
+
+reference: similar to a c pointer
+
+free(x);
+...
+free(x);
+
+when the owner goes out of scope, the value is dropped (free)
+let mut x = String::from("hello")
+// x is a mutable reference to the value hello
+{
+  let y = &x;
+  //y is a immutable refence to the value hello
+  //we cannot have both a mutable reference and an immutable ref, so x is now immutable
+  println!("{}",y,x);
+}// y goes out of scope, so the immutable reference is "dropped", and so x goes back to being
+//mutable
+
+x.push_str("world");
+
+println!("{}",x);
+
+so x is still the owner here, but y now has a immutable reference to the value x owns
+
+
+
+let mut x = String::from("hello")
+// x is a mutable reference to the value hello
+{
+  let y = &mut x;
+  //y is a mutable refence to the value hello
+  // we cannot have more than one mutable reference so x becomes invalid for as long as y exists
+  println!("{}",y);
+}// y goes out of scope, so now x becomes valid again
+
+x.push_str("world");
+
+println!("{}",x);
+
+
+
+1   let x = 4;          //x is created so it's lifetime begins
+2   let y = 3;          //
+3   let z = x + y;
+4   println!("{}", z);
+5   println!("{}", y);
+6   println!("{}", x); //x is last used so it's lifetime ends
+
+x:'a
+rust treats lifetime as extension of type
+
+3:int
+4.0:float
+
+x:isize for the lifetime of 'a
+y:f32 for the lifetime of 'b
+
+fn foo(a:&'a int) -> &'a int{
+
+}
+
+fn foo(a:&u32) -> &String{
+
+}
+
+1) rust will add a different lifetime to all input parameters that are a reference
+2) if one lifetime parameter, then output has the same
+3) if multiple inputs AND one is self or &self, then lifetime of output is same as self or &self
+
+fn bar(x:&'a u32, y:&'b u32) -> &'? u32{
+
+}
+
+fn bar(x:&'a u32, y:&'b u32) -> &'a u32{
+
+}
+out input lifetimes are dependent on output lifetimes
+
+we want to avoid dangling pointers
+lifetime of return value is at maximum th lifetime of the input it's linked to
+
+
+let f x = x + 1; ocaml does typie inference
+
+rust does lifetime inference
+
+
+explict lifetime parameters do not change the actual lifetime of anything
+all it does is help the rust compiler compiler know, when it should expect things to life
+
+
+
+
+
+
+lambda calc
+  what is a beta reduction
+  call by name vs call by value
+  then particular cases
+
+e -> x
+    |(Lx.e)
+    |e1 e2
+
+(Lx.x y)  a
+--e1---  -e2-
+
+beta reduction: call the function/apply the left value (e1) to the function on the right (e2)
+if left valuu (e1) is not function, then we cannot beta reduce hence, we are in beta normal form
+
+call by name and call by value are rules of precedence as to what to beta reduce first
+
+(Lx.Ly.y)((La.a a) b)
+--------  --------
+call by name, means we call the left first
+call by value, means we call the right first
+
+(Lx.Ly.y)(x (La.a a) ((Lc.c) d))
+call by name is always going to be left first (not do not eval argument until you have to)
+call by value is right first (argument first)
+
+perform one beta reduction using call by name 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

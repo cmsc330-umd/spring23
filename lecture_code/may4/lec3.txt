@@ -1,0 +1,173 @@
+rust stuff <traits, nums, structs>
+rust quiz review
+final exam review pt1
+
+topics we will not test you on but are fun and interesting
+property based testing
+esoteric languages :(
+
+rust quiz review
+ownership -> practice question
+
+who is the owner of ____ at line _____
+let x = 5;
+let y = x;
+let z = x + y;
+println!("{},{},{},x,y,z);
+|x:5 |
+|y:5 |
+|z:10|
+
+integers
+unisigned values
+bools
+floats
+characters
+"string"
+
+let s = String::from("hello");
+let res = fn foo(s);
+
+fn foo(x:String) -> String{
+  x
+}
+
+let s = String::from("hello");
+let res = fn foo(&s);
+//at this momement in time, res and s point to "hello", s is owner
+
+fn foo(x:&String) -> String{
+  *x
+}
+
+borrowing
+how many (im)mutable referenes to ___ are there at line _____
+does this compile?
+
+borrowing occurs and onwership is not transfered or moved
+let x = Sting::from("hello");
+let y = &x; //y is the borrower of the value hello from x. x is owner
+
+let mut x = Sting::from("hello");
+{ let y = &x;
+  println!("{}",y);
+}
+x.push_str("world");
+println!("{}",x);
+
+let mut x = ...
+let z = &mut x;
+
+let x = ....
+let z = &mut x;
+
+let mut x = Sting::from("hello"); //x is the owner and has mut ref
+{ let y = &mut x; //y has the mut reference to hello and x is invliad
+                  // until y's lifetime ends
+  let z = &mut x <- this would fail
+  println!("{}",y);
+}//y is dropped so x is now a valid mutable reference
+
+let x = String::from("hello");
+let y = &x;
+let z = &y;
+println!("{}",z);
+
+general: will this code compile or does it violate rules of ownership/references/lifetimes
+
+lifetimes
+what is the lifetime of ____?
+which has a longer/shorter lifetime? __ or __
+which variable's scope is the same as it's lifetime
+
+explict lifetimes
+
+so in rust, a lifetime is an extension of type
+x + 1 -> x:int
+x +. 4.0 -> x:float
+
+String x = ne String()
+Integer y = new Integer()
+
+x:u32
+y:&'a u32 -> y is a u32 referenece with a lifetime of 'a
+z:&'b u32 -> z is a u32 referenece with a lifetime of 'b
+
+how does rust deal with lifetimes?
+
+ocaml does type inference
+let f x = x + 1 and ocaml will infer that x is an int
+
+rust does "lifetime" inference
+fn longest(x:&u32) -> &u32
+rust will infer lifetimes for these parameters and return value.
+
+1) the compiler will give you a different lifetime for all input references
+fn longest(x:&u32) -> &u32
+rust will infer
+fn longest(x:&'a u32) -> &u32
+fn longest(x:&u32,y:&u32) -> &u32
+rust will infer
+fn longest(x:&'a u32,y:&'b u32) -> &u32
+2) if there is one lifetime param, then output get that same param
+fn longest(x:&u32) -> &u32
+rust will infer
+fn longest(x:&'a u32) -> &'a u32
+3) if there is multiple lifetime params, AND one of the params is self or &self, then the output lifetime is the same as self/&self.
+
+fn longest(&self, x:&u32,y:&u32) -> &u32
+rust will infer
+fn longest(&'a self, x:&'b u32,y:&'c u32) -> &'a u32
+
+fn longest(x:&u32,y:&u32) -> &u32
+how will rust inter?
+fn longest(x:&'a u32,y:&'b u32) -> &'? u32
+so in this case, rust cries because it doesn't know what to do
+rust compiler needs help
+in order to help the compiler, we need to make all lifetimes explict
+fn longest(x:&'a u32,y:&'a u32) -> &'a u32
+
+important: this just helps the compiler know what to do. 
+Explicit lifetime annotations does not actually change the lifetime of anything. 
+
+fn longest(x:&'a u32,y:&'a u32) -> &'a u32
+lifetimes prevent things like dangling pointers
+
+dependent on return lifetime
+the parameters are bound to the return lifetime
+
+fn longest(x:&'a u32,y:&'a u32) -> &'a u32 //return type is &'a u32
+lifetimes are relative, we just need to make sure that whatever we are referencing is living at least as long as the reference. 
+
+the parameters with the same lifetime as the return must live at least as long as the return value. 
+
+fn longest(x:&'a u32,y:&'a u32) -> &'a u32 
+x, y, and ret all have the same lifetime
+x>=y>=ret
+y>=x>=ret
+both are fine
+
+
+fn longest(x:&'a u32,y:&'a u32) -> &'a u32{
+  if x > y {x} else {y}
+}this would compile
+
+fn longest(x:&'a u32,y:&'b u32) -> &'a u32{
+  if x > y {x} else {y}
+}this would not compile because of mismatched return type
+
+fn longest(x:&'a u32,y:&'b u32) -> &'a u32{
+  if x > y {x} else {x}
+}this does compile 
+
+fn longest(x:u32,y:u32) -> u32{
+  if x > y {x} else {y}
+}this does compile
+
+fn longest(x:&'a u32,y:&'b u32) -> &'a u32
+
+fn longest(x:&'a u32,y:&'b u32) -> &'b u32
+fn longest(x:&'a str,y:&'b str) -> &'b str 
+
+let s = String::from("hello")
+
