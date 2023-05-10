@@ -1,0 +1,173 @@
+lambda calc
+  is turing complete (provides the "highest" level of computational ability)
+  
+  grammar:
+    e -> x //a value/variable
+        |Lx.e // a function
+        |e e
+        |(e)
+    is ambiguous-> left assoc helps clarify
+    scope of function is to end of expression or unmatched paren
+    
+  cbn,cbv -> precedence of ways to evaluate an expression
+  beta reduction -> calling a function (applying a function call)
+  alpha conversion -> changing bound vars and parameter they are bound to
+
+  bound var -> variable that is depending on a function's parameter
+  free var -> a variable that is not bound
+
+  cbn (lazy) -> we are calling the function without evaluating the argument
+  def myfunc(x)
+    x + 1
+  end
+
+  myfunc(1+3) -> 1 + 3 + 1
+  
+  cbv (eager) -> evaluate the argument before the function call
+  myfunc(1+3) -> myfunc(4) 
+
+  e1 -> v1    e2 -> v2    v3 is v1 + v2
+  -------------------------------------
+        e1 + e2 => v3
+  add(e1,e2) === e1 + e2 
+  the above is cbv
+
+
+
+  e3 is e1 + e2   e3 => v
+  -------------------------------------
+        e1 + e2 => v
+ this is analogous to cbn
+
+Scoping
+  Lx. a b c 
+   _  _____
+
+def func(x)
+  a
+  b
+  c
+end
+
+  (Lx. a b) c 
+def func(x)
+  a
+  b
+end
+c
+
+
+  (Lx. x x) x  --alpha convert -> (Ly. y y) x
+    p  b b  f
+def func(x) <- parameter          def func(y)
+  x <- bound                        y
+  x <- bound                        y
+end                               end
+x     <- free                     x
+
+
+(Lx.(Lx. x x) x) --alpha convert -> (Lx. (Ly. y y) x) -beta reduc -> (Lx. x x)
+      -  - -
+  _           _
+fun x -> (fun x -> x;x)
+def func(x)
+         -
+  Proc.new{|x| x x}
+            _  _ _
+  x
+  -
+end
+
+beta normal form: you cannot call a function at all
+
+fn longest(a:&'a str, b:&'a str) -> &'a str{
+
+}
+
+((b c) (λb. a)) ((λa. c) (λa. b))
+      e1                 e2
+let's call this expression inference
+e -> e
+    | Lx. e
+    | e1 e2
+
+(a b) c 
+--- -
+e1  e2
+rule of lambda calc -> left assoc
+
+
+Lx. a b c  <- must be correct due to scoping rules
+ -  -----
+ x    e
+
+Lx. a b c
+ -  - ---
+ x  e
+  e1   e2
+
+
+
+
+CFG
+  describe a set of string
+    can be recursive (describes a recursively defined set)
+  S -> aS | a
+  S = {a,
+       x \in S  => ax 
+  describes grammatically correct "sentences" which helps the parser phase
+  they decribe more than regular languages
+    (can compute more than a regular language)
+  CFGs can be ambiguous -> but any ambiguous CFG can be converted to non ambiguous
+  a set is ambiguous if we can derive a value in a set using 
+    > 1 left most derivation OR 
+    > 1 right most  derivation
+  if 1 right and 1 left most derivation exist, not nec. ambiguous
+
+  left most derivation
+  when given a defintion with multiple recursive calls, we call the left one first
+    S -> S + S|1
+  derive 1 + 1 + 1
+  S -> S + S -> 1 + S         S -> S + S -> S + S + S -> 1 + S + S
+       _   _                       _   _    _   _   _        _   _
+       L   R                       L   R    L   NL  R        L   R
+  not concrete but some good hueristics of id'ing a ambiguopus grammar
+  + if there is a symmetric def -> S + S
+  + if a recursive call can be done at any level -> S -> aS|Sa|a
+                                                    S -> aS -> aSa -> aaa
+                                                    S -> Sa -> aSa -> aaa
+
+
+HOF
+a higher order function (HOF) is a function that 
+  returns a fcuntion OR
+  takes in another  function as a parameter
+
+Map and Fold are examples (we talked about them because they are common)
+the reason they are common, is because they represent very common for loops
+map is a more specific version of fold
+
+so ultimately fold is a way to get looping recursively (fold is a for loop)
+
+fun x -> fun y -> x + y is not a loop, but also is  HOF
+fun x -> (fun y -> y + 1) takes in a value and returns a function
+
+fun x a -> (x a) + 1 takes in a function as a parameter and returns an int
+
+fun x a -> x a takes in a function and possibly returns a function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,218 @@
+lambda calc
+cfgs and regex
+currying
+ocaml and ruby
+
+lambda calc
+  is turing complete(language has the "highest" amount of computational ability)
+  cbn and cbv (found in other languages)
+  left assoc (a rule that helps make an expression non-ambiguous)
+  e -> x        (variables)
+      |Lx.e     (functions)
+      |e e      (compounds)
+  (this grammar is ambiguous)
+
+  beta reduction -> a function call (or apply a function) 
+  alpha conversion -> renaming bound vars and their parameter
+
+  bound var -> a variable that is dependent on a function's parameter
+  free var -> a variable that is not bound (nor a param)
+
+  beta normal form -> we cannot call anymore functions
+
+  cbn and cbv are just precedence rules of how to call a fuction
+  
+  cbn (lazy): calling a function without evalutating the argument
+  def myfunc(x){
+    x + 1
+  }
+  
+  myfunc(1+3) -> 1 + 3 + 1
+  (Lx. ___) (e)
+  ((Lx. ____) (Ly. ____)) d
+    (let x = (fun y -> ...) in body of x) d
+  
+  cbv (eager): evaluating the argument before the function call
+
+  myfunc(1+3) -> myfunc(4) -> 4 + 1
+
+aside: opsem
+
+  e1 -> v1    e2 -> v2    v3 is v1 + v2
+  -------------------------------------
+        e1 + e2 => v3
+v1,toks = eval e1
+v2,toks = eval e2
+return v1 + v2
+
+add(e1,e2) === e1 + e2
+the above rule is call by value
+
+  e3 is e1 + e2     e3 -> v
+  -------------------------------------
+        e1 + e2 => v
+the above rule is call by name
+
+(Lx. (Ly. y y) x) -> beta reduction (Lx. x x)
+cbn, cbv are just precedence rules
+
+explicit parens
+
+e -> x
+    |Lx. e
+    | e e
+    |(e)
+
+a b c
+--- -
+e1  e2
+
+a b c 
+- ---
+e1 e2
+
+rules of lambda calc
++ left assoc
++ scope of function is until end of expression or unmatched paren
+
+fn longest(a:&str, b:&str) -> &str <- does not compile in rust due to lack of lifetime inference
+
+given an expression in lambda calc, we are going to do expression inference
+
+
+a b c  <- due to left assoc rules, this is correct
+--- -
+e1  e2
+
+a b c  <- due to left associ rules, this is incorrect
+- ---
+e1 e2
+
+Lx. a b c <- due to scoping rules, this is correct
+ _  _____
+ x    e
+
+Lx. a b c <- due to scoping rules, this is incorrect
+ _  _ ___
+ x  e
+  e1   e2
+
+explict parens don't change expression, just helps use parse/evalu the expresion
+
+a b (Lx. x) ((Lx. a) (Lc. b))
+e e     e         e       e
+e1 e2 e3 e4
+(e1 e2) e3 e4
+((e1 e2) e3) e4
+(((e1 e2) e3) e4)
+a b ((Lx. x) ((Lx. a) (Lc. b))) is not the same as above
+
+ -> beta reduc
+  -> 
+(((a b) (Lx. x)) ((Lx. a) (Lc. b)))
+(((a b) (Lx. x)) (a)): this is in beta normal form
+
+a b (lx.x) a -> this is also beta normal form
+(Ly. x y) (Lx.x) a
+    e       e    e
+   (e       e)   e
+((Ly. x y) (Lx.x)) a
+(x (lx.x)) a
+
+e1 e2
+and e1 is a function, we can beta reduce
+if e1 is not a function, we cannot reduce e1 e2 except if e2 can be reduced
+
+if neither cbv and cbv have infinite loops, they have the same BNF
+if one is not terminiating, then they do not evalute the same way
+
+
+CFGs and regex
+
+CFGs
+  a CFG describes a set of srings
+    to describe a set, its going to use a recursivly defined set notation
+    S -> aS|a
+    S = { a,
+          x \in S => ax
+
+  we can do more with cfgs than regex 
+    (computation ability > regular language)
+  fsm and regex (regular languages) are computationally the same
+  cfgs can compute everything a regular language can computer plus some
+  non terminals, production, terminals
+  describe the grammar of a language
+  useful to determine if a "sentence" is grammatically correct (parsing phase)
+  grammars can be ambiguous
+    left most derivation vs a right most derivation
+    when expanding the grammar, we expand the left most recursive call  first 
+  1 + 1 + 1
+  S -> S + S | 1
+  S -> S + S -> 1 + S -> 1 + S + S -> 1 + 1 + S -> 1 + 1 + 1
+       L   R
+  S -> S + S -> S + S + S -> 1 + S + S -> 1 + 1 + S -> 1 + 1 + 1
+    when given mutliple rec calls, evaluate the left most first
+    if a string has (note, \exists not \forall)
+      > 1 left most derivation OR
+      > 1 right most derivation
+    then it is ambiguous
+    if 1 left and 1 right, it is not nec. ambiguous
+
+  S -> 1 + S | 1
+
+not concrete, but good hueristics for id'ing ambiguous grammars
+  + if there is a symmetric recursive definiton: S + S
+  + if you can use the recusive calls at different "levels" 
+              S -> aS | Sa | a
+              S -> aS -> aSa -> aaa
+              S -> Sa -> aSa -> aaa
+    rephrase: you can use different recursive calls at the same step 
+
+  S -> S + S | T
+  T -> T - T | 1
+
+  not concrete but good hueristics for relative numbering of grammars
+  a^xb^y x>= 3y, x>=y>=1
+
+  for every b, I need at least 3 'a's
+  aaab
+  if zero bs, then at least 0 a
+  we can obtain a >= (at least) relation 
+  a+ aa* -> at least 3 as is the same as aaaa*
+  S -> aaaTSb|aaaTb  // maintains the aaaa* for every b relation
+  T -> aT|e          //a*
+  rephrase: chain together known cfgs relations (common known cfgs are a* or variations)
+
+  parse tree vs ast: both ways to model a grammatically correct sentence
+  S -> S + S | 1
+    1 + 1 + 1
+    parse tree cares about the symbols that we saw
+          S
+        / |\
+       /  || 
+      S   | \
+     /|\  | |
+    S + S | S
+    | | | | |
+    1 + 1 + 1
+
+    an ast cares about the operations we want to consider
+         + 
+        / \
+      +    \
+     / \    |
+    1 + 1 + 1
+
+    the ast is better input for an evaluator than a parse tree
+
+ruby:
+  imperative
+  built in regex
+  everything is an object
+  support procs and code blocks
+  uses a garbage collector
+  latent typing
+
+static and dynamic when is type checking done (compiler or run time)
+latent and manifest (type is associated with value, not variable)
+                    (what is a type associated with)

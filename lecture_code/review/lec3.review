@@ -1,0 +1,191 @@
+lambda calc
+cfgs
+hof
+rust stuff
+
+lambda calc
+  is turing complete (has the "highest" amount of computational ability)
+  is a minimal turing complete language
+
+  there are functions in this language
+  left assoc
+  we can beta reduce expression (sometimes multiple ways)
+  lazy or eager (cbn/cbv) are ways of evaluating (found in other languages)
+
+  e -> Lx.e     (function)
+      |x        (variable)
+      |e e      (compound)
+  this grammar is ambiguous
+  we can add parenthesis to remove ambiguity
+  e -> (e)
+  free vs bound vars
+  bound can be alpha converted
+
+  scoping rules for functions (scope goes to end or paren)
+  
+  bound var: a variable that is dependent on the parameter of a lambda function
+  free var: a variable that is not bound (nor a param)
+  
+  alpha conversion: changing the names of bound variables and their param
+                  (do this to for easy readability)
+
+  (Lx. (Lx. x x x) x) x
+    -    +  + + +  -  _
+  (La. (Lx. x x x) a) x
+  (La. (Lz. z z z) a) x
+
+  (Lx.x) (Lx.x)
+  (Lx.x) (Ly.y)
+  (Ly.y) (Lx.x)
+  (Ly.y) (Lz.z)
+
+  beta reduction: a single function call (or applying a function)
+  beta normal form: when an expression that cannot be beta reduced anymore
+
+  cbn (lazy): we do not evaluate the arguments before calling a function 
+  def func(x)
+    x + 1
+  end
+
+  func(3+1) -> 3 + 1 + 1
+  
+  cbv (eager): evaluate the arguments before calling a function
+  func(3+1) -> func(4) -> 4 + 1
+
+cbv and cbn are precedence rules (what are you going to prioritze first?)
+if both cbn and cbv strats terminate, then they should evaluate to the same thing
+if one of cbn and cbv strats do not terminate, then they evalute differently
+
+aside: opsem
+
+  e1 => v1    e2 => v2    v3 is v1 + v2
+  -------------------------------------
+          e1 + e2 => v3
+v1 toks = eval e1
+v2 toks = eval e2
+return (v1 + v2) toks
+
+this is call by value semantics
+add(e1,e2) === e1 + e2
+
+  e3 is e1 + e2       e3 => v
+  ---------------------------
+        e1 + e2 => v
+
+this is call by name semantics
+
+explicit parens
+
+fn longest(a:&str, b:&str) -> &str
+does not compile due to rust being unable to infer lifetimes
+fn longer(a:u32, B:u32) -> u32
+this does compile
+
+in rust, there is a lifetime inference
+
+let f x = x + 1 and ocaml infers the type of x to be an int
+all because of rules of inference (either lifetime inference or type inference)
+
+lambda calc also has rules of inference
+  e -> x
+     |Lx. e
+     |e e
+     |(e)
+a b c <- due to rules of LC about left assoc, this is correct
+--- -
+e1  e2
+
+a b c <- due to rules of LC about left assoc, this is incorrect
+- ---
+e1  e2
+
+due to left assoc rules, when given e1 e2 e3 e4 ....
+we want to group the left 2 first
+(e1 e2) e3
+e1 e2 e3
+
+Lx. a b c <- due to scoping rules this is correct
+ -  -----
+ x    e
+    e
+
+Lx. a b c <- due to scoping rules, this is incorrect
+ -  - ---
+ x  e  e2
+  e1 
+     e
+adding explicit parens does should not change the meaning of the sentence
+it just helps us parse it
+
+a b (Lx.x) ((La.c) (Lx. b) b)
+e e    e       e      e    e
+           ________e_________
+so if we add more (explicit) parens the meaning of this expression shouldn't change
+
+(((a b) (Lx.x)) ((La.c) (Lx. b) b))
+(((a b) (Lx.x)) (c b))
+
+CFGs
+  (can describe languages that have more computational ability that 
+    regular languages, but not all languages that are turing complete)
+  determines if a string is grammatically correct
+  helps us build a string
+  a cfg describes a set of string through some rules
+  S -> aS|a
+  S = {a,
+       x \in S => ax
+  terminals, non terminals, production rules
+  grammars can be ambiguous
+  so grammars are useful for the parsing phase of compilation or evaluation
+      (some such parsers include a recursive decent parser)
+
+  what makes a grammar ambiguous?
+    a grammar is ambiguous if
+      >1 left most derivation for a string OR
+      >1 right most derivation for a string
+    \exists rather than a \forall
+  if there is 1 left most derivation and 1 right most derivation, not nec ambiguous
+  what is a left most derivation?
+  always expand/substitute the left most recursive call
+  S -> S + S | 1
+  1 + 1 + 1
+  S -> S + S -> 1 + S -> ...
+       L   R        
+
+not concrete but some good hueristics
+  + if rec calls are symmetric  S + S 
+  + if the rec calls can be done at any "level"
+    rephrase: we can interchange rec calls 
+    S -> aS|Sa|a
+    S -> aS -> aSa -> aaa
+    S -> Sa -> aSa -> aaa
+
+HOF
+  a function that takes in a function (code) as an argument
+  a function that returns a function  
+
+let f x = x 3;
+let f y = fun x -> x + y;
+
+we talked about 2 particular HOF (map and fold) because they are very common
+  (they are common because they represent for loops)
+map is a particular case of fold
+  (fold is just a for loop)
+
+for i in tree:
+  do something with i
+
+let rec tree_fold f t a : needs a function, needs a tree, and needs and acc
+  function: let f a v : needs the acculator and curr node
+
+we go through the tree by left, self, right
+
+type tree Node of int * tree * tree | Leaf
+
+let in_ord t = tree_fold (fun x -> fun y -> y::x) t []
+
+a = Proc.new{|x| x+1}
+a.call(4)
+
+let a = fun x -> x + 1
+a 4
