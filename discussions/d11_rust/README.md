@@ -19,7 +19,7 @@ Modern language designed for concurrency; it's similar to C++ and OCaml, but doe
 
 * Variables can either be declared as mutable (`mut`) or immutable
     * Similar to `const` in C
-    * Mutable means the variable can be reassigned, e.g. `let mut x = 0; x = x + 5;`
+    * Mutable means the variable can be reassigned or modified, e.g. `let mut x = 0; x = x + 5;`
 
 ### Ownership
 
