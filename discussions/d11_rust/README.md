@@ -13,7 +13,7 @@ Modern language designed for concurrency; it's similar to C++ and OCaml, but doe
 
 	`do_something(&mut x);` &lt;- Borrowing, avoids ownership change
 
-	`println("{}",x);`
+	`println!("{}",x);`
 
 ### Mutability
 
