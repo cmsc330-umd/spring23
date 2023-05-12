@@ -66,7 +66,7 @@ Modern language designed for concurrency; it's similar to C++ and OCaml, but doe
 
 Example with .iter(): 
 
-```ocaml
+```rs
 let mut arr = [1,2,3];
 for &i in arr.iter() {
 	println!("{}",i);
